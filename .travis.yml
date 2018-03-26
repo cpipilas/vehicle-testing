@@ -21,7 +21,7 @@ install:
     - export PATH=$PATH:/home/travis/build/cpipilas/vehicle-testing/gcc-arm-none-eabi-4_9-2015q3/bin
     - arm-none-eabi-gcc --version
     - mkdir particleGeoLoc
-    - cp -Rf vehicle-tracking.cpp lib particleGeoLoc
+    - cp -Rf vehicle-tracking.cpp libs particleGeoLoc
     - cd firmware/main
     - make all PLATFORM=photon APPDIR=../../particleGeoLoc
     - cd ../../
