@@ -19,8 +19,7 @@ install:
     - tar xjf gcc-arm*.tar.bz2
     - export PATH=$PATH:/home/travis/build/cpipilas/vehicle-testing/gcc-arm-none-eabi-4_9-2015q3/bin
     - arm-none-eabi-gcc --version
-    - mkdir particleGeoLoc
-    - cp -Rf vehicle_tracking.cpp libs particleGeoLoc
+    - mkdir particleGeoLoc && cp -Rf vehicle_tracking.cpp libs particleGeoLoc
     - cd firmware/main
     - make all PLATFORM=photon APPDIR=../../particleGeoLoc
     - cd ../../
@@ -31,6 +30,8 @@ script:
     - curl -X PUT "https://api.particle.io/v1/devices/25001c001347343438323536?access_token=9f9d7874f34b93011193c8f09f6cfb3c09161851" -F file=@firmware/modules/particleGeoLoc/target/particleGeoLoc.bin -F file_type=binary
     # ping device
     - curl https://api.particle.io/v1/devices/25001c001347343438323536/ping -X PUT -d access_token=9f9d7874f34b93011193c8f09f6cfb3c09161851
+    # get device info
+    - curl "https://api.particle.io/v1/devices/25001c001347343438323536?access_token=9f9d7874f34b93011193c8f09f6cfb3c09161851"
 
 after_success:
     - echo "after_success phase"
