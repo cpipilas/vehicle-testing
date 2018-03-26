@@ -1,0 +1,27 @@
+language: bash
+
+before_install:
+    - sudo apt-get update && apt-get install -y make libarchive-zip-perl git gcc-multilib vim
+
+install:
+    - pwd
+    - git clone https://github.com/spark/firmware.git firmware
+    - cd firmware
+    - git checkout release/stable
+    - cd ..
+    - wget https://launchpad.net/gcc-arm-embedded/4.9/4.9-2015-q3-update/+download/gcc-arm-none-eabi-4_9-2015q3-20150921-linux.tar.bz2
+    - tar xjf gcc-arm*.tar.bz2
+    - export PATH=$PATH:/builds/cpipilas/particle/gcc-arm-none-eabi-4_9-2015q3/bin
+    - arm-none-eabi-gcc --version
+    - cd firmware/main
+    - make all PLATFORM=photon APPDIR=../../particleGeoLoc
+    - cd ../../
+
+script:
+    - echo "script phase"
+
+after_success:
+    - echo "after_success phase"
+
+after_script:
+    - echo "after_script phase"
