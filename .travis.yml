@@ -26,9 +26,9 @@ before_script:
 
 script:
     - echo "---> script phase..."
-    - bash build.sh $PLATFORM
+    - build.sh
     - echo $?
-    #- bash tests.sh
+    #- tests.sh
 
 env:
     matrix:
