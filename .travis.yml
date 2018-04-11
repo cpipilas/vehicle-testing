@@ -26,9 +26,14 @@ before_script:
 
 script:
     - echo "---> script phase..."
-    - bash build.sh
-    #- bash tests.sh
+    - bash build.sh $PLATFORM
     - echo $?
+    #- bash tests.sh
+
+env:
+    matrix:
+        - PLATFORM=photon
+        - PLATFORM=electron
 
 after_success:
     - echo "Tests completed successfully!"
