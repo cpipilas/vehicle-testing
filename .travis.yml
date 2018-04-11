@@ -26,12 +26,9 @@ before_script:
 
 script:
     - echo "---> script phase..."
-    #- bash build.sh
+    - bash build.sh
     #- bash tests.sh
-    - cd firmware/main
-    - make all PLATFORM=photon APPDIR=../../particleGeoLoc
     - echo $?
-    - cd ../../
 
 after_success:
     - echo "Tests completed successfully!"
