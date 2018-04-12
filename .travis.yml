@@ -32,8 +32,8 @@ script:
 
 env:
     matrix:
-        - PLATFORM=photon
-        - PLATFORM=electron
+        - hw_plat=photon
+        - hw_plat=electron
 
 after_success:
     - echo "Tests completed successfully!"
