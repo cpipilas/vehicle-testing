@@ -1,5 +1,5 @@
 #!/bin/bash
 
 cd firmware/main
-make all PLATFORM=$PLATFORM APPDIR=../../particleGeoLoc
+make all PLATFORM=$hw_plat APPDIR=../../particleGeoLoc
 cd ../../
